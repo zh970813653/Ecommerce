@@ -1,8 +1,13 @@
 import { Button, Card, Col, Row, Typography, Image } from 'antd'
+import { push } from 'connected-react-router'
 import React, { FC } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
 import { API } from '../../config'
+import { addProductItem } from '../../helper/cart'
 import { Product } from '../../models/product'
+
+
 
 const { Title, Paragraph } = Typography
 
@@ -13,6 +18,16 @@ interface ProductItemProps {
 }
 
 const ProductItem: FC<ProductItemProps> = ({ product, showViewProduct = true, showCartBtn = true }) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const handleAddProduct = () => {
+
+        addProductItem(product,()=> {
+            history.push({
+                pathname: '/cart'
+            })
+        })
+    }
     const showButtons = () => {
         let buttonArray = []
         if (showViewProduct) {
@@ -24,8 +39,8 @@ const ProductItem: FC<ProductItemProps> = ({ product, showViewProduct = true, sh
         }
         if (showCartBtn) {
             buttonArray.push(
-                <Button type='link'>
-                    <Link to="">加入购物车</Link>
+                <Button type='link' onClick={handleAddProduct}>
+                    <Link to=''>加入购物车</Link>
                 </Button>
             )
         }
