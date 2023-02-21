@@ -12,6 +12,8 @@ import AdminRoute from './components/admin/AdminRoute'
 import AddProduct from './components/admin/AddProduct'
 import Product from './components/core/Product'
 import Cart from './components/core/Cart'
+import Success from './components/core/Success'
+import Orders from './components/admin/Orders'
 
 const Routes = () => {
   return (
@@ -23,12 +25,13 @@ const Routes = () => {
         <Route path="/signin" component={Signin} exact></Route>
         <Route path="/signup" component={Signup} exact></Route>
         <Route path="/cart" component={Cart} exact />
+        <Route path="/paysuccess" component={Success} />
         <PrivateRoute path='/user/dashboard' component={Dashboard}></PrivateRoute>
         <AdminRoute path='/admin/dashboard' component={AdminDashboard}></AdminRoute>
         <AdminRoute path='/create/category' component={AddCategory}></AdminRoute>
         <AdminRoute path='/create/product' component={AddProduct}></AdminRoute>
         <AdminRoute path="/product/:productId" component={Product} />
-       
+        <AdminRoute path="/admin/orders" component={Orders} />
       </Switch>
     </HashRouter>
   )

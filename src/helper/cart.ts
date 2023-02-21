@@ -66,3 +66,12 @@ export const deleteCartItem = (productId: string) => {
   setStorage(KEY, cart)
   return cart
 }
+
+export const itemCount = () => {
+  if (typeof window !== "undefined") {
+    if (localStorage.getItem("cart")) {
+      return JSON.parse(localStorage.getItem("cart")!).length
+    }
+  }
+  return 0
+}

@@ -1,9 +1,9 @@
 import { Col, Divider, Input, Row } from 'antd'
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { CartItem, getCart } from '../../helper/cart'
 import CartItemFc from './CartItemFc'
 import Layout from './Layout'
+import Pay from './Pay'
 import TotalPrice from './TotalPrice'
 
 const Cart = () => {
@@ -53,9 +53,9 @@ const Cart = () => {
           <Row>
             <TotalPrice cart={cart} setTotalPrice={setTotalPrice} />
           </Row>
-          {/* <Row>
+          <Row>
             <Pay totalPrice={totalPrice} cart={cart} address={address} />
-          </Row> */}
+          </Row>
         </Col>
         </Row>
     </Layout>
